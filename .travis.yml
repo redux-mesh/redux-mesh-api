@@ -8,6 +8,7 @@ services:
 install:
 - yarn
 - yarn lint
+- yarn docker
 deploy:
   - provider: cloudfoundry
     api: api.run.pivotal.io
