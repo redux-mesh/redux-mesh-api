@@ -8,7 +8,10 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node .",
-    "posttest": "npm run lint && nsp check"
+    "test": "exit 0",
+    "docker": "docker build -t reduxmesh/api .",
+    "docker:tag": "docker tag reduxmesh/api reduxmesh/api",
+    "docker:push": "docker push reduxmesh/api"
   },
   "dependencies": {
     "compression": "^1.0.3",

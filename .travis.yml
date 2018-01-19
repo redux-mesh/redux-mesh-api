@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '8'
+install:
+- yarn
+- yarn lint
+- docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+- yarn docker
+- yarn docker:tag
+- yarn docker:push
+cache:
+  yarn: true
+services:
+  - docker
