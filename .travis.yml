@@ -1,14 +1,14 @@
 language: node_js
 node_js:
 - '8'
-install:
-- yarn
-- yarn lint
-- docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-- yarn docker
-- yarn docker:tag
-- yarn docker:push
 cache:
   yarn: true
 services:
   - docker
+install:
+- yarn
+- yarn lint
+after_success:
+- '[[ $TRAVIS_BRANCH == "master" && docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" ]]'
+- '[[ $TRAVIS_BRANCH == "master" && yarn docker:tag ]]'
+- '[[ $TRAVIS_BRANCH == "master" && yarn docker:push ]]'
