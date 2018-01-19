@@ -9,8 +9,7 @@ install:
 - yarn
 - yarn lint
 after_success:
-- '[[ $TRAVIS_BRANCH == "master" && docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  ]]'
+- '[[ $TRAVIS_BRANCH == "master" && docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" ]]'
 - '[[ $TRAVIS_BRANCH == "master" && yarn docker:tag ]]'
 - '[[ $TRAVIS_BRANCH == "master" && yarn docker:push ]]'
 deploy:
