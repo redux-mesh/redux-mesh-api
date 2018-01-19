@@ -4,11 +4,23 @@ node_js:
 cache:
   yarn: true
 services:
-  - docker
+- docker
 install:
 - yarn
 - yarn lint
 after_success:
-- '[[ $TRAVIS_BRANCH == "master" && docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" ]]'
+- '[[ $TRAVIS_BRANCH == "master" && docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  ]]'
 - '[[ $TRAVIS_BRANCH == "master" && yarn docker:tag ]]'
 - '[[ $TRAVIS_BRANCH == "master" && yarn docker:push ]]'
+deploy:
+  provider: cloudfoundry
+  api: api.run.pivotal.io
+  username: david.ahern26@gmail.com
+  password:
+    secure: SI42Vfv5j+I2W8FpygrwZxY6rKUmPgQEoFZsy/1rWSaVs++TYEnAzRXWNQ2oOAExW2+yle/Q8ApwedNphIGDgp1a0UF2YbP+Cnwx5atFSdLbZnkSHohwpTeFCDtzdYl+CFuZYk38cnUo/EM3KyUijkTBI6Vsj6do1Yz1qZb8Y8T73p5T4NQBSXfdnqubVlQsMQjhMCYgX5/4aTD6QrZZSO2E2SFqV3Inft/x6cFNUoNQAU9NxhPnkHKpD0PQUR+AoQHV4/zfOkillIRmbCGZYto8uXfd5rAH6I13LTXZDV1SO+/tavz9MhSwahiKOOZ/cw5OJahbcr0gtdFQ8RZJkCq1Dpb9n2zwyK9Q+h7CbZf9N0837dmQCXX3TJ6ZF6E2aOQiz8e1wuhwWu3HI/E3ur3iWqu8G3/TPYfwenGt/nF+bs8RY1Oq+EJW7s7W4xhoJrrxSegl873aIS3WyBD22CzLDrTlYLy6+6E2xoEBlAnb4Y+WG92rFym8ADs9nLjoSl/nMAFXR2eip758VT04aAVfmSZ7hTDIHRuGhoTmwl4NPRMvnlFQ0WlH6+9Jlflxo9BNSi1fO5j8FG/rBGhETCD/Kg5pc6mEsr7Fp/JNHIpi/PHP2Aw4immj3rj/hkNz3zDCTC3xt3DURXDZsWwfOhujbYtJ9kujaM3HxySqhJ4=
+  organization: thor
+  space: prod
+  on:
+    repo: redux-mesh/redux-mesh-api
+    branch: master
