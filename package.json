@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "cross-env NODE_ENV=dev node .",
+    "start": "cross-env NODE_ENV=prod MONGODB_URL=mongodb://localhost:27017/mydb node .",
     "test": "exit 0",
     "docker": "docker build -t reduxmesh/api .",
     "docker:tag": "docker tag reduxmesh/api reduxmesh/api",
