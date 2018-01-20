@@ -6,8 +6,8 @@ module.exports = app => {
   ds.autoupdate(err => {
     if (err) throw err;
 
-  createBootstrapUsers();
-});
+    createBootstrapUsers();
+  });
 
   function createBootstrapUsers() {
     let user = app.models.user;
@@ -18,13 +18,13 @@ module.exports = app => {
       }
 
       user.create([
-      {
-        username: 'test',
-        email: 'test6@test.com',
-        password: 'testpassword',
-        emailVerified: true
-      }
-    ]);
-  });
+        {
+          username: 'test',
+          email: 'test6@test.com',
+          password: 'testpassword',
+          emailVerified: true
+        }
+      ]);
+    });
   }
 };
