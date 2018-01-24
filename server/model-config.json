@@ -39,5 +39,13 @@
   "user": {
     "dataSource": "db",
     "public": true
+  },
+  "app": {
+    "dataSource": "db",
+    "public": true
+  },
+  "token": {
+    "dataSource": "db",
+    "public": false
   }
 }

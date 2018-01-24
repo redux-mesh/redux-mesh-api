@@ -1,6 +1,6 @@
 {
-  "name": "user",
-  "base": "User",
+  "name": "app",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -11,18 +11,26 @@
       "type": "string",
       "defaultFn": "uuid"
     },
-    "username": {
+    "createdAt":{
+      "type" : "date",
+      "defaultFn": "now"
+    },
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
       "type": "string",
       "required": true
     }
   },
   "validations": [],
   "relations": {
-    "apps": {
-      "type": "hasMany",
-      "model": "app"
+    "userId": {
+      "type": "belongsTo",
+      "model": "user"
     },
-    "tokens": {
+    "token": {
       "type": "hasMany",
       "model": "token"
     }
