@@ -30,9 +30,9 @@
       "type": "belongsTo",
       "model": "user"
     },
-    "token": {
+    "events": {
       "type": "hasMany",
-      "model": "token"
+      "model": "event"
     }
   },
   "acls": [

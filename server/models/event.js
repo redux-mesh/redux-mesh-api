@@ -1,20 +1,20 @@
 'use strict';
 
 module.exports = Event => {
-  Event.track = (req, event, next) => {
-    console.log(req.user);
-    console.log(event);
-    next();
+
+  Event.createOptionsFromRemotingContext = function (ctx) {
+    let base = this.base.createOptionsFromRemotingContext(ctx);
+    base.userId = ctx.req.user.userId;
+    base.appId = ctx.req.user.appId;
+    return base;
   };
 
-  Event.remoteMethod('track', {
-    accepts: [
-      {arg: 'req', type: 'object', http: {source: 'req'}},
-      {arg: 'event', type: 'object', required: true}
-    ],
-    isStatic: true,
-    returns: {arg: 'event', type: 'object'},
-    http: {path: '/', verb: 'post'}
+  Event.observe('before save', (ctx, next) => {
+    if (ctx.isNewInstance) {
+      ctx.instance.userId = ctx.options.userId;
+      ctx.instance.appId = ctx.options.appId;
+    }
+    next();
   });
 };
 

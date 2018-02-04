@@ -12,8 +12,8 @@ module.exports = Token => {
         return next('Application does not exist');
       }
 
-      jwt.sign({userId: app.userId, appId}, jwtSecret, {expiresIn: 31536000}, (err, token) => {
-        next(err, token);
+      jwt.sign({userId: app.userId, appId}, jwtSecret, {expiresIn: 31536000}, token => {
+        next(null, token);
       });
     });
   };
