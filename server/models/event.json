@@ -1,4 +1,60 @@
 {
   "name": "event",
-  "base": "Model"
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "id": true,
+      "type": "string",
+      "defaultFn": "uuid"
+    },
+    "createdAt": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "appId": {
+      "type": "string",
+      "required": true
+    },
+    "timestamp": {
+      "type": "number",
+      "required": true
+    },
+    "sessionId": {
+      "type": "string",
+      "required": true
+    },
+    "eventType": {
+      "type": "string",
+      "required": true
+    },
+    "event": {
+      "type": "object",
+      "required": true
+    },
+    "store": {
+      "type": "object",
+      "required": true
+    }
+  },
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user"
+    },
+    "app": {
+      "type": "belongsTo",
+      "model": "app"
+    }
+  },
+  "acls": [
+  ],
+  "methods": {}
 }

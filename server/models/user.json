@@ -22,9 +22,9 @@
       "type": "hasMany",
       "model": "app"
     },
-    "tokens": {
+    "events": {
       "type": "hasMany",
-      "model": "token"
+      "model": "event"
     }
   },
   "acls": [
