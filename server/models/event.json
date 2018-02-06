@@ -42,6 +42,10 @@
     "store": {
       "type": "object",
       "required": true
+    },
+    "ua": {
+      "type": "object",
+      "required": true
     }
   },
   "relations": {
