@@ -2,8 +2,18 @@
 
 let loopback = require('loopback');
 let boot = require('loopback-boot');
+let session = require('express-session');
 
 let app = module.exports = loopback();
+
+const cookieSecret = process.env.COOKIE_SECRET;
+
+app.use(session({
+  secret: cookieSecret,
+  resave: false,
+  saveUninitialized: true
+}));
+
 app.start = () => {
   return app.listen(() => {
     app.emit('started');
@@ -16,12 +26,9 @@ app.start = () => {
   });
 };
 
-// Bootstrap the application, configure models, datasources and middleware.
-// Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname, (err) => {
   if (err) throw err;
 
-  // start the server if `$ node server.js`
   if (require.main === module)
     app.start();
 });
