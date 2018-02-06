@@ -5,6 +5,7 @@
       "error",
       "never"
     ],
-    "max-len": [0]
+    "max-len": [0],
+    "space-before-function-paren": [0]
   }
 }
