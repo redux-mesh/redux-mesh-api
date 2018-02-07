@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "session",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -11,32 +11,36 @@
       "type": "string",
       "defaultFn": "uuid"
     },
-    "createdAt": {
-      "type": "date",
-      "defaultFn": "now"
-    },
     "userId": {
       "type": "string",
       "required": true
     },
-    "name": {
+    "appId": {
       "type": "string",
+      "required": true
+    },
+    "sessionId": {
+      "type": "string",
+      "required": true
+    },
+    "ua": {
+      "type": "object",
       "required": true
     }
   },
   "validations": [],
   "relations": {
+    "events": {
+      "type": "hasMany",
+      "model": "event"
+    },
     "user": {
       "type": "belongsTo",
       "model": "user"
     },
-    "sessions": {
-      "type": "hasMany",
-      "model": "session"
-    },
-    "events": {
-      "type": "hasMany",
-      "model": "event"
+    "app": {
+      "type": "belongsTo",
+      "model": "app"
     }
   },
   "acls": [

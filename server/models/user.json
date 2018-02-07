@@ -25,6 +25,10 @@
     "events": {
       "type": "hasMany",
       "model": "event"
+    },
+    "sessions": {
+      "type": "hasMany",
+      "model": "session"
     }
   },
   "acls": [
