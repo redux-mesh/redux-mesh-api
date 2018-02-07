@@ -48,6 +48,10 @@
     "dataSource": "db",
     "public": true
   },
+  "session": {
+    "dataSource": "db",
+    "public": true
+  },
   "event": {
     "dataSource": "db",
     "public": true

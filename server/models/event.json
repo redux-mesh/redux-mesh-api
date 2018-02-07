@@ -23,12 +23,12 @@
       "type": "string",
       "required": true
     },
-    "timestamp": {
-      "type": "number",
-      "required": true
-    },
     "sessionId": {
       "type": "string",
+      "required": true
+    },
+    "timestamp": {
+      "type": "number",
       "required": true
     },
     "eventType": {
@@ -42,10 +42,6 @@
     "store": {
       "type": "object",
       "required": true
-    },
-    "ua": {
-      "type": "object",
-      "required": true
     }
   },
   "relations": {
@@ -56,6 +52,10 @@
     "app": {
       "type": "belongsTo",
       "model": "app"
+    },
+    "session": {
+      "type": "belongsTo",
+      "model": "session"
     }
   },
   "acls": [

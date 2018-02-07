@@ -9,4 +9,5 @@ module.exports = function enableAuthentication(server) {
 
   // JWT Configuration
   server.use('/api/events', jwt({secret: jwtSecret}));
+  server.use('/api/sessions', jwt({secret: jwtSecret}));
 };
