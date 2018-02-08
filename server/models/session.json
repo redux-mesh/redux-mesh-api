@@ -19,10 +19,6 @@
       "type": "string",
       "required": true
     },
-    "sessionId": {
-      "type": "string",
-      "required": true
-    },
     "ua": {
       "type": "object",
       "required": true
